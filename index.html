@@ -11,20 +11,38 @@
 	<body>
 		
 
-<header class="large-12 columns header" id="header">
+
+<header class="large-12 columns header" id="header" data-magellan-expedition="fixed" data-options="destination_threshold:65;throttle_delay:0;">
     <div class="row wrapper">
-        <div class="large-12 columns inner">
+        <div class="large-2 columns inner">
             <img src="assets/img/logo-sosz-small.png" alt="Startup Open Space Zaragoza 2014">
+        </div>
+        <div class="large-10 columns inner">
+            <dl class="sub-nav-custom">
+                <dd data-magellan-arrival="description">
+                    <a href="#description">Descripción</a>
+                </dd>
+                <dd data-magellan-arrival="location">
+                    <a href="#location">Ubicación</a>
+                </dd>
+                <dd data-magellan-arrival="partners">
+                    <a href="#partners">Patrocina</a>
+                </dd>
+                <dd data-magellan-arrival="organize">
+                    <a href="#organize">Organiza</a>
+                </dd>
+            </dl>
         </div>
     </div>
 </header><!-- end header -->
+
 
 <div class="large-12 columns hero" id="hero">
     <div class="row wrapper">
         <div class="hero-left">
             <h1 class="logo">Startup Open Space Zaragoza 2014</h1>
             <h3>
-                <strong>22</strong> de <strong>Febrero</strong> de 2014<br>
+                <strong>44</strong> de <strong>Febrero</strong> de 2014<br>
                 Centro de Arte y Tecnología de Zaragoza<br>
                 <small>By <strong>Cachirulo Valley</strong></small>
             </h3>
@@ -32,7 +50,8 @@
     </div>
 </div><!-- end hero -->
 
-<div class="large-12 columns description" id="description">
+<a name="description"></a>
+<div class="large-12 columns description" data-magellan-destination="description">
     <div class="row wrapper">
         <div class="large-12 columns inner">
             <h2>Presentación del evento</h2>
@@ -44,7 +63,7 @@
     </div>
 </div><!-- end description -->
 
-<div class="large-12 columns tshirt" id="tshirt">
+<div class="large-12 columns tshirt">
     <div class="row wrapper">
         <div class="large-12 columns inner">
             <h2>¿Quieres aparecer aquí?</h2>
@@ -54,32 +73,35 @@
     </div>
 </div><!-- end tshirt -->
 
-<div class="large-12 columns where-map" id="where-map">
+<a name="location"></a>
+<div class="large-12 columns where-map" data-magellan-destination="location">
     <div class="row wrapper">
         <div class="large-12 columns inner">
-            <h2>Lugar: Centro de Arte y Tecnología de Zaragoza</h2>
-            <h5>Avda. Ciudad de Soria, 8 - acceso por Avda. Autonomía, 7 Planta B50003 - Zaragoza <a href="http://www.zaragoza.es/ciudad/centros/detalle_Centro?id=5105" class="label radius" target="_blank">Web</a></h5>
+            <h2>Localización: Centro de Arte y Tecnología de Zaragoza</h2>
+            <h5>Avda. Ciudad de Soria, 8 - Acceso por Avda. Autonomía, 7 Planta B. 50003 - Zaragoza <a href="http://www.zaragoza.es/ciudad/centros/detalle_Centro?id=5105" class="label radius" target="_blank">Web</a></h5>
         </div>
     </div>
 </div><!-- end where-map -->
-
-<div class="large-12 columns where-photo" id="where-photo">
+<div class="large-12 columns where-photo">
     <div class="row wrapper">
         <div class="large-12 columns inner">
         </div>
     </div>
 </div><!-- end where-photo -->
 
-<div class="large-12 columns partners" id="tshirt">
+
+<a name="partners"></a>
+<div class="large-12 columns partners" data-magellan-destination="partners">
     <div class="row wrapper">
         <div class="large-12 columns inner">
-            <h2>Ptrocinan:</h2>
+            <h2>Patrocina:</h2>
             <img src="assets/img/patrocinadores.png" alt="Patrocian: ETOPIA, Ayuntamiento de Zaragoza y Cerveza AMBAR">
         </div>
     </div>
 </div><!-- end partners -->
 
-<div class="large-12 columns organize" id="organize">
+<a name="organize"></a>
+<div class="large-12 columns organize" data-magellan-destination="organize">
     <div class="row wrapper">
         <div class="large-12 columns inner">
             <h2>Organizado por Cachirulo Valley</h2>
@@ -87,7 +109,7 @@
     </div>
 </div><!-- end organize -->
 
-<footer class="large-12 columns footer" id="footer">
+<footer class="large-12 columns footer">
     <div class="row wrapper">
         <div class="large-12 columns inner">
             <p><small>Copyright: Cachirullo Valley 2014</small></p>

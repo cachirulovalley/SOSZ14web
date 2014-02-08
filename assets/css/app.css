@@ -2019,6 +2019,51 @@ ul.pagination {
     -webkit-border-radius: 3px;
     border-radius: 3px; }
 
+.sub-nav {
+  display: block;
+  width: auto;
+  overflow: hidden;
+  margin: -0.25rem 0 1.125rem;
+  padding-top: 0.25rem;
+  margin-right: 0;
+  margin-left: -0.75rem; }
+  .sub-nav dt {
+    text-transform: uppercase; }
+  .sub-nav dt,
+  .sub-nav dd,
+  .sub-nav li {
+    float: left;
+    display: inline;
+    margin-left: 1rem;
+    margin-bottom: 0.625rem;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 0.875rem;
+    color: #999999; }
+    .sub-nav dt a,
+    .sub-nav dd a,
+    .sub-nav li a {
+      text-decoration: none;
+      color: #999999; }
+      .sub-nav dt a:hover,
+      .sub-nav dd a:hover,
+      .sub-nav li a:hover {
+        color: #0085b1; }
+    .sub-nav dt.active a,
+    .sub-nav dd.active a,
+    .sub-nav li.active a {
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      font-weight: normal;
+      background: #008cba;
+      padding: 0.1875rem 1rem;
+      cursor: default;
+      color: white; }
+      .sub-nav dt.active a:hover,
+      .sub-nav dd.active a:hover,
+      .sub-nav li.active a:hover {
+        background: #0085b1; }
+
 div.switch {
   position: relative;
   padding: 0;
@@ -3544,10 +3589,33 @@ body {
  * HEADER
  */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   background: #1b2f3b;
   text-align: center;
-  padding: 1em;
-  border-bottom: 1px solid #233d4c; }
+  padding: 1em 0 0 0;
+  border-bottom: 1px solid #233d4c;
+  /* end sub-nav-custom */ }
+  .header .sub-nav-custom {
+    text-align: right;
+    padding-top: 0.3em; }
+    .header .sub-nav-custom dd {
+      display: inline-block;
+      margin-left: 1em; }
+      .header .sub-nav-custom dd a {
+        display: inline-block;
+        font-weight: 200;
+        border: 1px solid #45809c;
+        padding: 0.2em 1em;
+        color: #45809c;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        transition: border-color 1s, color 1s; }
+        .header .sub-nav-custom dd a.active, .header .sub-nav-custom dd a:hover {
+          border: 1px solid white;
+          color: white; }
 
 /* end header */
 /**

@@ -1,5 +1,5 @@
 # SOSZ14
 
-The most advanced responsive front-end framework in the world.
+Startup Open Space Zaragoza 2014
 
 Auto commited via [Mixture](http://mixture.io)
