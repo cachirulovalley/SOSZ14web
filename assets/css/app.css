@@ -3598,6 +3598,11 @@ body {
   padding: 1em 0 0 0;
   border-bottom: 1px solid #233d4c;
   /* end sub-nav-custom */ }
+  .header .logo {
+    opacity: 0.9;
+    transition: opacity 1s; }
+    .header .logo:hover {
+      opacity: 1; }
   .header .sub-nav-custom {
     text-align: right;
     padding-top: 0.3em; }
@@ -3709,7 +3714,7 @@ body {
  * PARTNERS
  */
 .partners {
-  padding-top: 80px;
+  padding-top: 120px;
   padding-bottom: 80px; }
   .partners h2 {
     border-bottom: 1px solid #175c7d;
@@ -3722,9 +3727,9 @@ body {
 .organize {
   padding-top: 80px;
   padding-bottom: 80px;
-  background: url("../img/cachirulo-valley-bg.jpg") center top no-repeat;
+  background: url("../img/cachirulo-valley-bg.jpg") center -40px no-repeat;
   background-size: cover;
-  min-height: 600px; }
+  min-height: 560px; }
   .organize h2 {
     color: white;
     margin-top: 60%; }
