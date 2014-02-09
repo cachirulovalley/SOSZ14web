@@ -3583,6 +3583,8 @@ body {
     letter-spacing: 0.03em !important;
     text-shadow: 0px 2px 0px #12242e;
     filter: dropshadow(color=#12242e, offx=0, offy=1); }
+  body a {
+    transition: 0.6s; }
 
 /* end body */
 /**
@@ -3600,7 +3602,7 @@ body {
   /* end sub-nav-custom */ }
   .header .logo {
     opacity: 0.9;
-    transition: opacity 1s; }
+    transition: opacity 0.6s; }
     .header .logo:hover {
       opacity: 1; }
   .header .sub-nav-custom {
@@ -3617,7 +3619,7 @@ body {
         color: #45809c;
         -webkit-border-radius: 3px;
         border-radius: 3px;
-        transition: border-color 1s, color 1s; }
+        transition: border-color 0.6s, color 0.6s; }
         .header .sub-nav-custom dd a.active, .header .sub-nav-custom dd a:hover {
           border: 1px solid white;
           color: white; }
@@ -3662,6 +3664,12 @@ body {
 .description {
   padding-top: 80px;
   padding-bottom: 80px; }
+  .description .footer {
+    border-top: 2px solid #1b2f3b;
+    border-bottom: 2px solid #1b2f3b;
+    margin-top: 40px;
+    padding: 1em;
+    text-align: center !important; }
 
 /* end description */
 /**
@@ -3683,7 +3691,10 @@ body {
     background: rgba(27, 47, 59, 0.2);
     border: 3px solid white;
     text-transform: uppercase;
-    margin-top: -60px; }
+    margin-top: -60px;
+    transition: background 0.6s; }
+    .tshirt .button:hover {
+      background: #175c7d; }
 
 /* end tshirt */
 /**
@@ -3699,9 +3710,11 @@ body {
   background-size: contain;
   min-height: 850px;
   border-bottom: 120px solid white; }
-  .where-map a.label:hover {
-    background: #175c7d;
-    color: white; }
+  .where-map a.label {
+    transition: background 0.6s; }
+    .where-map a.label:hover {
+      background: #175c7d;
+      color: white; }
 
 /* end where-map */
 .where-photo {
@@ -3736,16 +3749,16 @@ body {
 
 /* end organize */
 /**
- * FOOTER
+ * PAGE FOOTER
  */
-.footer {
+.page-footer {
   background: #12242e; }
-  .footer p, .footer small {
+  .page-footer p, .page-footer small {
     color: white;
     opacity: 0.7;
     text-align: center; }
-  .footer p {
+  .page-footer p {
     padding-top: 20px;
     padding-bottom: 80px; }
 
-/* end organize */
+/* end page-footer */
