@@ -3584,7 +3584,8 @@ body {
     text-shadow: 0px 2px 0px #12242e;
     filter: dropshadow(color=#12242e, offx=0, offy=1); }
   body a {
-    transition: 0.6s; }
+    transition: 0.6s;
+    font-weight: 500; }
 
 /* end body */
 /**
@@ -3745,7 +3746,7 @@ body {
 .organize {
   padding-top: 80px;
   padding-bottom: 80px;
-  background: url("../img/cachirulo-valley-bg.jpg") center -40px no-repeat;
+  background: #12242e url("../img/cachirulo-valley-bg.jpg") center -40px no-repeat;
   background-size: cover;
   min-height: 560px; }
   .organize h2 {
