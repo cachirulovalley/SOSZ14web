@@ -1,0 +1,185 @@
+{
+  "title": "Webinars",
+  "subtitle": "Webinars & Weekly demos",
+  "path": "webinars",
+
+
+
+  "webinars": [
+    {
+      "name": "The merge machine",
+      "body": "A detailed walk through the merge cases that make Plastic SCM the most powerful merge machine in the version control industry. If you're interested on Plastic SCM, you can't miss this one.",
+      "presenters": ["Manu Lucio", "Pablo Santos"],
+      "state": "archived",
+      "month": "NOV",
+      "day": "26",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Merging refactors",
+      "body": "Refactoring is the key operation to keep the technical debt under control. But refactors in a big team can turn out to be a nightmare during merge. Find out how SemanticMerge and Plastic SCM work together to turn even the more complex refactor into a trivial operation.",
+      "presenters": ["Pablo Santos", "Francisco Monteverde"],
+      "state": "archived",
+      "month": "NOV",
+      "day": "12",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "The requirements of enterprise DVCS",
+      "body": "If you're considering to adopt a DVCS in your organization you might consider certain requirements like Security, the ability to work in both centralized and distributed modes, ease of use and more. This session will walk through the different requirements you will consider for enterprise DVCS and how Plastic SCM can help.",
+      "presenters": ["Pablo Santos", "Manu Lucio"],
+      "state": "archived",
+      "month": "OCT",
+      "day": "29",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Branching Patterns",
+      "body": "We will be walking through the most important branching patterns and how they help solving common real world problems. We will use Plastic SCM to demonstrate how even the most complex patterns are easy to understand when rendered by the Branch Explorer.",
+      "presenters": ["Pablo Santos"],
+      "state": "archived",
+      "month": "OCT",
+      "day": "22",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "The impact of version control in business",
+      "body": "Join this webinar and discover how version control can positively impact your business results. Ever imagined how code merge can impact the result of a business unit? Join our CEO Francisco Monteverde and find out how.",
+      "presenters": ["Francisco Monteverde - CEO"],
+      "state": "archived",
+      "month": "OCT",
+      "day": "15",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Recursive merge",
+      "body": " You’ve must heard about -git merge recursive strategy- which is the default algorithm that git uses when merging two branches. How does it work and why is it good? We will be walking step by step through the scenarios explaining all of them in detail.<br> For more info <a href='http://codicesoftware.blogspot.com/2011/09/merge-recursive-strategy.html' target='_blank'>click here</a>",
+      "presenters": ["Manu Lucio", "Pablo Santos"],
+      "url_view": "http://youtu.be/Lg1igaCtAck",
+      "state": "archived",
+      "month": "OCT",
+      "day": "02",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "How DVCS can reduce your development costs and enhance productivity",
+      "body": "",
+      "presenters": ["David Anderson", "Francisco Monteverde"],
+      "url_view": "http://youtu.be/5m7UZZD3mxE",
+      "state": "archived",
+      "month": "OCT",
+      "day": "08",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Component oriented development with Xlinks",
+      "body": "Enterprise software development initiatives often share components among different projects. Instead of having just a single massive software tree, splitting the different projects and components into repositories seems to be the best idea. When that happens correctly linking the repositories to configure the dependencies is achieved with Xlinks. This session will describe Xlinks in depth and will help you master component oriented development with Plastic SCM.",
+      "presenters": ["Manu Lucio", "Pablo Santos"],
+      "state": "archived",
+      "month": "SEP",
+      "day": "24",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Plastic SCM under heavy load",
+      "body": "Join this meeting and connect live to a Plastic SCM setup with 300 concurrent bot clients performing operations against a single server. We will explain the setup, the test environment and show you how Plastic performs under different loads. If your current version control system is affected by locks or can cope with high load, you will be able to compare how Plastic SCM deals with equivalent or even higher load on commodity hardware.",
+      "presenters": ["Pablo Santos", "Rubén de Alba"],
+      "state": "archived",
+      "month": "SEP",
+      "day": "12",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    },
+    {
+      "name": "Plastic SCM - secured!",
+      "body": "Enterprise environments require to enforce business procedures using security rules. Discover how to secure your repository and how to enforce policies using Plastic SCM.",
+      "presenters": ["Manu Lucio"],
+      "state": "archived",
+      "month": "DEC",
+      "day": "10",
+      "year": "2013",
+      "hour": "18:00 CEST - 9:00 PST"
+    }
+  ],
+
+
+
+  "demos": [
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "SEP",
+      "day": "18",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "OCT",
+      "day": "01",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "OCT",
+      "day": "15",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "NOV",
+      "day": "05",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "NOV",
+      "day": "19",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "state": "archived",
+      "month": "DEC",
+      "day": "03",
+      "year": "2013"
+    },
+    {
+      "name": "Plastic SCM bi-weekly demo",
+      "body": "Bi-Weekly demo describing Plastic SCM",
+      "presenters": ["Manu Lucio", "David Anderson"],
+      "url_register": "338067778",
+      "state": "upcoming",
+      "month": "DEC",
+      "day": "17",
+      "year": "2013"
+    }
+  ]
+
+
+
+
+}

@@ -3715,6 +3715,11 @@ body {
     .where-map a.label:hover {
       background: #175c7d;
       color: white; }
+  .where-map h5 {
+    background: rgba(255, 255, 255, 0.7);
+    border: 10px solid rgba(255, 255, 255, 0.4);
+    -webkit-border-radius: 3px;
+    border-radius: 3px; }
 
 /* end where-map */
 .where-photo {
