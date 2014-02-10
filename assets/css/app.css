@@ -3657,6 +3657,11 @@ body {
     font-size: 1.8em;
     text-shadow: 0px 2px 0px #12242e;
     filter: dropshadow(color=#12242e, offx=0, offy=1); }
+  .hero .twitter {
+    text-indent: 2em;
+    font-size: 0.6em;
+    margin: 0.4em 0 0 0;
+    background: #0e70a0 url("../img/icon-twitter.png") 1.2em center no-repeat; }
 
 /* end hero */
 /**
