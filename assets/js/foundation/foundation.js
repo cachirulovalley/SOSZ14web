@@ -6,177 +6,233 @@
  * http://www.opensource.org/licenses/mit-license.php
 */
 
-/*jslint unparam: true, browser: true, indent: 2 */
+(function ($, window, document, undefined) {
+  'use strict';
 
-// Accommodate running jQuery or Zepto in noConflict() mode by
-// using an anonymous function to redefine the $ shorthand name.
-// See http://docs.jquery.com/Using_jQuery_with_Other_Libraries
-// and http://zeptojs.com/
-var libFuncName = null;
-if (typeof jQuery === "undefined" &&
-    typeof Zepto === "undefined" &&
-    typeof $ === "function") {
-    libFuncName = $;
-} else if (typeof jQuery === "function") {
-    libFuncName = jQuery;
-} else if (typeof Zepto === "function") {
-    libFuncName = Zepto;
-} else {
-    throw new TypeError();
-}
+  // Used to retrieve Foundation media queries from CSS.
+  if($('head').has('.foundation-mq-small').length === 0) {
+    $('head').append('<meta class="foundation-mq-small">');
+  }
 
-(function ($) {
+  if($('head').has('.foundation-mq-medium').length === 0) {
+    $('head').append('<meta class="foundation-mq-medium">');
+  }
 
-(function () {
-  // add dusty browser stuff
-  if (!Array.prototype.filter) {
-    Array.prototype.filter = function(fun /*, thisp */) {
-      "use strict";
-   
-      if (this == null) {
-        throw new TypeError();
+  if($('head').has('.foundation-mq-large').length === 0) {
+    $('head').append('<meta class="foundation-mq-large">');
+  }
+
+  if($('head').has('.foundation-mq-xlarge').length === 0) {
+    $('head').append('<meta class="foundation-mq-xlarge">');
+  }
+
+  if($('head').has('.foundation-mq-xxlarge').length === 0) {
+    $('head').append('<meta class="foundation-mq-xxlarge">');
+  }
+
+  // Enable FastClick if present
+
+  $(function() {
+    if(typeof FastClick !== 'undefined') {
+      // Don't attach to body if undefined
+      if (typeof document.body !== 'undefined') {
+        FastClick.attach(document.body);
       }
-   
-      var t = Object(this),
-          len = t.length >>> 0;
-      if (typeof fun != "function") {
-        try {
-          throw new TypeError();
-        } catch (e) {
-          return;
-        }
+    }
+  });
+
+  // private Fast Selector wrapper,
+  // returns jQuery object. Only use where
+  // getElementById is not available.
+  var S = function (selector, context) {
+    if (typeof selector === 'string') {
+      if (context) {
+        return $(context.querySelectorAll(selector));
       }
-   
-      var res = [],
-          thisp = arguments[1];
-      for (var i = 0; i < len; i++) {
-        if (i in t) {
-          var val = t[i]; // in case fun mutates this
-          if (fun && fun.call(thisp, val, i, t)) {
-            res.push(val);
-          }
-        }
-      }
-   
-      return res;
+
+      return $(document.querySelectorAll(selector));
+    }
+
+    return $(selector, context);
+  };
+
+  /*
+    https://github.com/paulirish/matchMedia.js
+  */
+
+  window.matchMedia = window.matchMedia || (function( doc, undefined ) {
+
+    "use strict";
+
+    var bool,
+        docElem = doc.documentElement,
+        refNode = docElem.firstElementChild || docElem.firstChild,
+        // fakeBody required for <FF4 when executed in <head>
+        fakeBody = doc.createElement( "body" ),
+        div = doc.createElement( "div" );
+
+    div.id = "mq-test-1";
+    div.style.cssText = "position:absolute;top:-100em";
+    fakeBody.style.background = "none";
+    fakeBody.appendChild(div);
+
+    return function(q){
+
+      div.innerHTML = "&shy;<style media=\"" + q + "\"> #mq-test-1 { width: 42px; }</style>";
+
+      docElem.insertBefore( fakeBody, refNode );
+      bool = div.offsetWidth === 42;
+      docElem.removeChild( fakeBody );
+
+      return {
+        matches: bool,
+        media: q
+      };
+
     };
 
-    if (!Function.prototype.bind) {
-      Function.prototype.bind = function (oThis) {
-        if (typeof this !== "function") {
-          // closest thing possible to the ECMAScript 5 internal IsCallable function
-          throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
-        }
-     
-        var aArgs = Array.prototype.slice.call(arguments, 1), 
-            fToBind = this, 
-            fNOP = function () {},
-            fBound = function () {
-              return fToBind.apply(this instanceof fNOP && oThis
-                 ? this
-                 : oThis,
-               aArgs.concat(Array.prototype.slice.call(arguments)));
-            };
-     
-        fNOP.prototype = this.prototype;
-        fBound.prototype = new fNOP();
-     
-        return fBound;
-      };
+  }( document ));
+
+  /*
+   * jquery.requestAnimationFrame
+   * https://github.com/gnarf37/jquery-requestAnimationFrame
+   * Requires jQuery 1.8+
+   *
+   * Copyright (c) 2012 Corey Frang
+   * Licensed under the MIT license.
+   */
+
+  (function( $ ) {
+
+  // requestAnimationFrame polyfill adapted from Erik Möller
+  // fixes from Paul Irish and Tino Zijdel
+  // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+  // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+
+  var animating,
+    lastTime = 0,
+    vendors = ['webkit', 'moz'],
+    requestAnimationFrame = window.requestAnimationFrame,
+    cancelAnimationFrame = window.cancelAnimationFrame;
+
+  for(; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
+    requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
+    cancelAnimationFrame = cancelAnimationFrame ||
+      window[ vendors[lastTime] + "CancelAnimationFrame" ] || 
+      window[ vendors[lastTime] + "CancelRequestAnimationFrame" ];
+  }
+
+  function raf() {
+    if ( animating ) {
+      requestAnimationFrame( raf );
+      jQuery.fx.tick();
     }
   }
 
-  // fake stop() for zepto.
-  $.fn.stop = $.fn.stop || function() {
-    return this;
-  };
-}());
+  if ( requestAnimationFrame ) {
+    // use rAF
+    window.requestAnimationFrame = requestAnimationFrame;
+    window.cancelAnimationFrame = cancelAnimationFrame;
+    jQuery.fx.timer = function( timer ) {
+      if ( timer() && jQuery.timers.push( timer ) && !animating ) {
+        animating = true;
+        raf();
+      }
+    };
 
-;(function (window, document, undefined) {
-  'use strict';
+    jQuery.fx.stop = function() {
+      animating = false;
+    };
+  } else {
+    // polyfill
+    window.requestAnimationFrame = function( callback, element ) {
+      var currTime = new Date().getTime(),
+        timeToCall = Math.max( 0, 16 - ( currTime - lastTime ) ),
+        id = window.setTimeout( function() {
+          callback( currTime + timeToCall );
+        }, timeToCall );
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+
+    window.cancelAnimationFrame = function(id) {
+      clearTimeout(id);
+    };
+      
+  }
+
+  }( jQuery ));
+
+
+  function removeQuotes (string) {
+    if (typeof string === 'string' || string instanceof String) {
+      string = string.replace(/^[\\/'"]+|(;\s?})+|[\\/'"]+$/g, '');
+    }
+
+    return string;
+  }
 
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.0.8',
+    version : '5.0.3',
 
-    // global Foundation cache object
-    cache : {},
+    media_queries : {
+      small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      medium : S('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      large : S('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xlarge: S('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xxlarge: S('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
+    },
 
-    init : function (scope, libraries, method, options, response, /* internal */ nc) {
+    stylesheet : $('<style></style>').appendTo('head')[0].sheet,
+
+    init : function (scope, libraries, method, options, response) {
       var library_arr,
           args = [scope, method, options, response],
-          responses = [],
-          nc = nc || false;
-          
-      // disable library error catching,
-      // used for development only
-      if (nc) this.nc = nc;
+          responses = [];
+
+      // check RTL
+      this.rtl = /rtl/i.test(S('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
 
-      if (libraries && typeof libraries === 'string') {
-        if (/off/i.test(libraries)) return this.off();
-
-        library_arr = libraries.split(' ');
-
-        if (library_arr.length > 0) {
-          for (var i = library_arr.length - 1; i >= 0; i--) {
-            responses.push(this.init_lib(library_arr[i], args));
-          }
+      if (libraries && typeof libraries === 'string' && !/reflow/i.test(libraries)) {
+        if (this.libs.hasOwnProperty(libraries)) {
+          responses.push(this.init_lib(libraries, args));
         }
       } else {
         for (var lib in this.libs) {
-          responses.push(this.init_lib(lib, args));
+          responses.push(this.init_lib(lib, libraries));
         }
       }
 
-      // if first argument is callback, add to args
-      if (typeof libraries === 'function') {
-        args.unshift(libraries);
-      }
-
-      return this.response_obj(responses, args);
-    },
-
-    response_obj : function (response_arr, args) {
-      for (var callback in args) {
-        if (typeof args[callback] === 'function') {
-          return args[callback]({
-            errors: response_arr.filter(function (s) {
-              if (typeof s === 'string') return s;
-            })
-          });
-        }
-      }
-
-      return response_arr;
+      return scope;
     },
 
     init_lib : function (lib, args) {
-      return this.trap(function () {
-        if (this.libs.hasOwnProperty(lib)) {
-          this.patch(this.libs[lib]);
-          return this.libs[lib].init.apply(this.libs[lib], args);
-        }
-      }.bind(this), lib);
-    },
+      if (this.libs.hasOwnProperty(lib)) {
+        this.patch(this.libs[lib]);
 
-    trap : function (fun, lib) {
-      if (!this.nc) {
-        try {
-          return fun();
-        } catch (e) {
-          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
+        if (args && args.hasOwnProperty(lib)) {
+          return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
+
+        args = args instanceof Array ? args : Array(args);    // PATCH: added this line
+        return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
-      return fun();
+      return function () {};
     },
 
     patch : function (lib) {
-      this.fix_outer(lib);
+      lib.scope = this.scope;
+      lib['data_options'] = this.lib_methods.data_options;
+      lib['bindings'] = this.lib_methods.bindings;
+      lib['S'] = S;
+      lib.rtl = this.rtl;
     },
 
     inherit : function (scope, methods) {
@@ -190,15 +246,15 @@ if (typeof jQuery === "undefined" &&
     },
 
     random_str : function (length) {
-      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
-      
+      var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+
       if (!length) {
-          length = Math.floor(Math.random() * chars.length);
+        length = Math.floor(Math.random() * chars.length);
       }
-      
+
       var str = '';
       for (var i = 0; i < length; i++) {
-          str += chars[Math.floor(Math.random() * chars.length)];
+        str += chars[Math.floor(Math.random() * chars.length)];
       }
       return str;
     },
@@ -207,35 +263,12 @@ if (typeof jQuery === "undefined" &&
 
     // methods that can be inherited in libraries
     lib_methods : {
-      set_data : function (node, data) {
-        // this.name references the name of the library calling this method
-        var id = [this.name,+new Date(),Foundation.random_str(5)].join('-');
-
-        Foundation.cache[id] = data;
-        node.attr('data-' + this.name + '-id', id);
-        return data;
-      },
-
-      get_data : function (node) {
-        return Foundation.cache[node.attr('data-' + this.name + '-id')];
-      },
-
-      remove_data : function (node) {
-        if (node) {
-          delete Foundation.cache[node.attr('data-' + this.name + '-id')];
-          node.attr('data-' + this.name + '-id', '');
-        } else {
-          $('[data-' + this.name + '-id]').each(function () {
-            delete Foundation.cache[$(this).attr('data-' + this.name + '-id')];
-            $(this).attr('data-' + this.name + '-id', '');
-          });
-        }
-      },
-
       throttle : function(fun, delay) {
         var timer = null;
+
         return function () {
           var context = this, args = arguments;
+
           clearTimeout(timer);
           timer = setTimeout(function () {
             fun.apply(context, args);
@@ -243,12 +276,17 @@ if (typeof jQuery === "undefined" &&
         };
       },
 
-      // parses data-options attribute on nodes and turns
-      // them into an object
+      // parses data-options attribute
       data_options : function (el) {
-        var opts = {}, ii, p,
-            opts_arr = (el.attr('data-options') || ':').split(';'),
-            opts_len = opts_arr.length;
+        var opts = {}, ii, p, opts_arr, opts_len,
+            data_options = el.data('options');
+
+        if (typeof data_options === 'object') {
+          return data_options;
+        }
+
+        opts_arr = (data_options || ':').split(';'),
+        opts_len = opts_arr.length;
 
         function isNumber (o) {
           return ! isNaN (o-0) && o !== null && o !== "" && o !== false && o !== true;
@@ -279,26 +317,6 @@ if (typeof jQuery === "undefined" &&
         return setTimeout(fun, delay);
       },
 
-      // animated scrolling
-      scrollTo : function (el, to, duration) {
-        if (duration < 0) return;
-        var difference = to - $(window).scrollTop();
-        var perTick = difference / duration * 10;
-
-        this.scrollToTimerCache = setTimeout(function() {
-          if (!isNaN(parseInt(perTick, 10))) {
-            window.scrollTo(0, $(window).scrollTop() + perTick);
-            this.scrollTo(el, to, duration - 10);
-          }
-        }.bind(this), 10);
-      },
-
-      // not supported in core Zepto
-      scrollLeft : function (el) {
-        if (!el.length) return;
-        return ('scrollLeft' in el[0]) ? el[0].scrollLeft : el[0].pageXOffset;
-      },
-
       // test for empty object or array
       empty : function (obj) {
         if (obj.length && obj.length > 0)    return false;
@@ -309,54 +327,85 @@ if (typeof jQuery === "undefined" &&
         }
 
         return true;
+      },
+
+      register_media : function(media, media_class) {
+        if(Foundation.media_queries[media] === undefined) {
+          $('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
+        }
+      },
+
+      addCustomRule : function(rule, media) {
+        if(media === undefined) {
+          Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
+        } else {
+          var query = Foundation.media_queries[media];
+          if(query !== undefined) {
+            Foundation.stylesheet.insertRule('@media ' + 
+              Foundation.media_queries[media] + '{ ' + rule + ' }');
+          }
+        }
+      },
+
+      loaded : function (image, callback) {
+        function loaded () {
+          callback(image[0]);
+        }
+
+        function bindLoad () {
+          this.one('load', loaded);
+
+          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+            var src = this.attr( 'src' ),
+                param = src.match( /\?/ ) ? '&' : '?';
+
+            param += 'random=' + (new Date()).getTime();
+            this.attr('src', src + param);
+          }
+        }
+
+        if (!image.attr('src')) {
+          loaded();
+          return;
+        }
+
+        if (image[0].complete || image[0].readyState === 4) {
+          loaded();
+        } else {
+          bindLoad.call(image);
+        }
+      },
+
+      bindings : function (method, options) {
+        var self = this,
+            should_bind_events = !S(this).data(this.name + '-init');
+
+        if (typeof method === 'string') {
+          return this[method].call(this, options);
+        }
+
+        if (S(this.scope).is('[data-' + this.name +']')) {
+          S(this.scope).data(this.name + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+
+          if (should_bind_events) {
+            this.events(this.scope);
+          }
+
+        } else {
+          S('[data-' + this.name + ']', this.scope).each(function () {
+            var should_bind_events = !S(this).data(self.name + '-init');
+
+            S(this).data(self.name + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+
+            if (should_bind_events) {
+              self.events(this);
+            }
+          });
+        }
       }
-    },
-
-    fix_outer : function (lib) {
-      lib.outerHeight = function (el, bool) {
-        if (typeof Zepto === 'function') {
-          return el.height();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerHeight(bool);
-        }
-
-        return el.outerHeight();
-      };
-
-      lib.outerWidth = function (el) {
-        if (typeof Zepto === 'function') {
-          return el.width();
-        }
-
-        if (typeof bool !== 'undefined') {
-          return el.outerWidth(bool);
-        }
-
-        return el.outerWidth();
-      };
-    },
-
-    error : function (error) {
-      return error.name + ' ' + error.message + '; ' + error.more;
-    },
-
-    // remove all foundation events.
-    off: function () {
-      $(this.scope).off('.fndtn');
-      $(window).off('.fndtn');
-      return true;
-    },
-
-    zj : function () {
-      try {
-        return Zepto;
-      } catch (e) {
-        return jQuery;
-      }
-    }()
-  },
+    }
+  };
 
   $.fn.foundation = function () {
     var args = Array.prototype.slice.call(arguments, 0);
@@ -367,6 +416,4 @@ if (typeof jQuery === "undefined" &&
     });
   };
 
-}(this, this.document));
-
-})(libFuncName);
+}(jQuery, this, this.document));
