@@ -3620,7 +3620,30 @@ body {
         color: #45809c;
         -webkit-border-radius: 3px;
         border-radius: 3px;
-        transition: border-color 0.6s, color 0.6s; }
+        transition: border-color 0.6s, color 0.6s;
+        /* en new */ }
+        .header .sub-nav-custom dd a.new {
+          border: 1px solid #80b0c7;
+          color: #80b0c7;
+          position: relative; }
+          .header .sub-nav-custom dd a.new:after {
+            content: "new";
+            display: inline-block;
+            background: #f42a00;
+            color: white;
+            font-size: 0.7em;
+            padding: 0.4em 0.3em;
+            position: absolute;
+            top: -10px;
+            left: -12px;
+            -webkit-border-radius: 30px;
+            border-radius: 30px;
+            transform: rotate(-25deg);
+            -ms-transform: rotate(-25deg);
+            -moz-transform: rotate(-25deg);
+            -webkit-transform: rotate(-25deg);
+            -o-transform: rotate(-25deg);
+            opacity: 0.9; }
         .header .sub-nav-custom dd a.active, .header .sub-nav-custom dd a:hover {
           border: 1px solid white;
           color: white; }
@@ -3641,7 +3664,7 @@ body {
   .hero .hero-left {
     max-width: 60%;
     text-align: right;
-    margin-top: 80px; }
+    margin-top: 50px; }
   .hero .logo {
     display: inline-block;
     background: url("../img/logo-sosz-big.png") top right no-repeat;
@@ -3661,7 +3684,7 @@ body {
     text-indent: 2em;
     font-size: 0.6em;
     margin: 0.4em 0 0 0;
-    background: #0e70a0 url("../img/icon-twitter.png") 1.2em center no-repeat;
+    background: #0a7cb2 url("../img/icon-twitter.png") 1.2em center no-repeat;
     transition: background-color 0.5s; }
     .hero .twitter:hover {
       background-color: #13648b; }
