@@ -3738,6 +3738,34 @@ body {
 
 /* end where-photo */
 /**
+ * GUESTS
+ */
+.guests {
+  background: #e0ebf0;
+  padding-top: 120px;
+  padding-bottom: 80px; }
+  .guests li h6 {
+    background: white;
+    margin: 0;
+    padding: 1em;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 1.1em;
+    font-weight: 400; }
+    .guests li h6 small {
+      padding-left: 1em;
+      display: inline-block;
+      float: right; }
+    .guests li h6 a {
+      font-size: 1.2em;
+      background: #a3c6d7;
+      font-weight: 500;
+      color: #175c7d; }
+      .guests li h6 a:hover {
+        background: #63a9ca; }
+
+/* end guests */
+/**
  * PARTNERS
  */
 .partners {
