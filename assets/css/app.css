@@ -3764,11 +3764,15 @@ body {
  * GUESTS
  */
 .guests {
-  background: #e0ebf0;
+  background: #e4edf2;
   padding-top: 120px;
   padding-bottom: 80px; }
   .guests li h6 {
-    background: white;
+    background: #fcfcfc;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #bdced6;
+    border-bottom: 1px solid #bdced6;
     margin: 0;
     padding: 1em;
     -webkit-border-radius: 3px;
