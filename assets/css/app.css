@@ -3769,29 +3769,58 @@ body {
   background: #e4edf2;
   padding-top: 120px;
   padding-bottom: 80px; }
-  .guests li h6 {
-    background: #fcfcfc;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid #bdced6;
-    border-bottom: 1px solid #bdced6;
-    margin: 0;
-    padding: 1em;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    font-size: 1.1em;
-    font-weight: 400; }
-    .guests li h6 small {
-      padding-left: 1em;
-      display: inline-block;
-      float: right; }
-    .guests li h6 a {
-      font-size: 1.2em;
-      background: #a3c6d7;
-      font-weight: 500;
-      color: #175c7d; }
-      .guests li h6 a:hover {
-        background: #63a9ca; }
+  .guests li {
+    /* end box */ }
+    .guests li .box {
+      display: block;
+      background: #fcfcfc;
+      border-top: 1px solid white;
+      border-left: 1px solid white;
+      border-right: 1px solid #bdced6;
+      border-bottom: 1px solid #bdced6;
+      margin: 0;
+      padding: 1em;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      transition: outline 0.7s;
+      outline: 3px solid transparent; }
+      .guests li .box.link img {
+        -webkit-filter: grayscale(0.9);
+        -webkit-filter: grayscale(90%);
+        -moz-filter: grayscale(90%);
+        filter: gray;
+        filter: grayscale(90%);
+        filter: url(desaturate.svg#greyscale); }
+      .guests li .box.link:hover img {
+        -webkit-filter: grayscale(0);
+        -webkit-filter: grayscale(0%);
+        -moz-filter: grayscale(0%);
+        filter: gray;
+        filter: grayscale(0%);
+        filter: url(desaturate.svg#greyscale); }
+      .guests li .box.link:hover {
+        color: white;
+        outline: 3px solid #81c0df;
+        color: #1291ce; }
+      .guests li .box .avatar, .guests li .box .data {
+        display: inline-block !important;
+        width: 18%;
+        margin-right: 5%;
+        vertical-align: top; }
+      .guests li .box .avatar {
+        border: 1px solid #81c0df; }
+      .guests li .box .data {
+        width: 70%; }
+      .guests li .box p {
+        font-size: 1.1em;
+        font-weight: 400;
+        margin: -5px 0 0 0; }
+      .guests li .box .label {
+        margin: 0;
+        font-size: 0.8em;
+        background: #a3c6d7;
+        font-weight: 500;
+        color: #175c7d; }
 
 /* end guests */
 /**
