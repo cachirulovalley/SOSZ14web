@@ -25,4 +25,5 @@ var smoothScrolling = function(t){
     });
 };
 
-
+smoothScrolling('.header a.logo');
+smoothScrolling('.sub-nav-custom a');
