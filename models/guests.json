@@ -163,10 +163,6 @@
             "twitter": "marcis"
         },
         {
-            "name": "David Deza",
-            "twitter": "dvdzgz"
-        },
-        {
             "name": "Héctor Garzón",
             "twitter": "uncurioso"
         },
@@ -332,6 +328,10 @@
         {
             "name": "Ignacio Correas",
             "twitter": "icorreas"
+        },
+        {
+            "name": "Aritz Suescun",
+            "twitter": "ArtziS"
         }
     ]
 }
