@@ -3607,11 +3607,11 @@ body {
     .header .logo:hover {
       opacity: 1; }
   .header .sub-nav-custom {
-    text-align: right;
+    text-align: center;
     padding-top: 0.3em; }
     .header .sub-nav-custom dd {
       display: inline-block;
-      margin-left: 1em; }
+      margin-left: 0.3em; }
       .header .sub-nav-custom dd a {
         display: inline-block;
         font-weight: 200;
@@ -3867,3 +3867,17 @@ body {
     padding-bottom: 80px; }
 
 /* end page-footer */
+/**
+ * LAST MINUTE
+ */
+.last-minute {
+  text-align: center; }
+  .last-minute iframe {
+    display: inline-block;
+    border: 1px solid #e4e6e8 !important;
+    width: 70%;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 80px; }
+
+/* end last-minute */
