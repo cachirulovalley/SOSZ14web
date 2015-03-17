@@ -3822,8 +3822,8 @@ body {
  * PARTNERS
  */
 .partners {
-  padding-top: 120px;
-  padding-bottom: 80px; }
+  padding-top: 60px;
+  /*padding-bottom: 80px;*/ }
   .partners h2 {
     border-bottom: 1px solid #175c7d;
     margin-bottom: 80px; }
