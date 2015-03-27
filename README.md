@@ -1,6 +1,4 @@
-# SOSZ14
-
-Startup Open Space Zaragoza 2014 
+# Startup Open Space Zaragoza 
 
 [http://sosz15.cachirulovalley.com/](http://sosz15.cachirulovalley.com/)
 
